@@ -1,19 +1,5 @@
 # vue_shop
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
 
 ## 前端项目初始化步骤
 - 安装 `Vue` 脚手架
