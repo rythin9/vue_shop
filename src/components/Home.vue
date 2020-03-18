@@ -14,17 +14,24 @@
       <!-- 菜单两级，可以折叠 -->
       <el-aside width="200px">
         <!-- 侧边栏区域 -->
-        <el-menu background-color="#333744" text-color="#fff">
+        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff">
+          <!-- 一级菜单模板区 -->
+          <!-- 骚操作： :index -->
           <el-submenu :index="item.id+''" v-for="item in menulist" :key="item.id">
-            <!-- 一级菜单模板区 -->
             <template slot="title">
               <!-- 图标 -->
-              <i class="el-icon-location"></i>
+              <i :class="iconObj[item.id]"></i>
+              <!-- 文本 -->
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item index="subItem.id+''" v-for="subItem in item.children" :key="subItem.id">
-              <i class="el-icon-location"></i>
-              <span>{{subItem.authName}}</span>
+
+            <el-menu-item :index="subItem.id+''" v-for="subItem in item.children" :key="subItem.id">
+              <template slot="title">
+                <!-- 图标 -->
+                <i class="el-icon-menu"></i>
+                <!-- 文本 -->
+                <span>{{subItem.authName}}</span>
+              </template>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -41,7 +48,14 @@ export default {
   data() {
     return {
       // 左侧菜单数据
-      menulist: []
+      menulist: [],
+      iconObj: {
+        '125': 'iconfont icon-user',
+        '103': 'iconfont icon-tijikongjian',
+        '101': 'iconfont icon-shangpin',
+        '102': 'iconfont icon-danju',
+        '145': 'iconfont icon-baobiao'
+      }
     }
   },
   // 添加生命周期函数
@@ -94,5 +108,9 @@ export default {
 
 .el-main {
   background-color: #eaedf1;
+}
+
+.iconfont {
+  margin-right: 10px;
 }
 </style>
