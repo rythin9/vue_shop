@@ -15,7 +15,7 @@ axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
 // 设置拦截器
 axios.interceptors.request.use(config => {
   console.log(config)
-  config.headers.Authorization=window.sessionStorage.getItem('token')
+  config.headers.Authorization = window.sessionStorage.getItem('token')
   return config
 })
 Vue.prototype.$http = axios
