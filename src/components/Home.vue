@@ -15,16 +15,17 @@
       <el-aside width="200px">
         <!-- 侧边栏区域 -->
         <el-menu background-color="#333744" text-color="#fff">
-          <el-submenu index="1">
+          <el-submenu :index="item.id+''" v-for="item in menulist" :key="item.id">
             <!-- 一级菜单模板区 -->
             <template slot="title">
               <!-- 图标 -->
               <i class="el-icon-location"></i>
-              <span>导航一</span>
+              <span>{{item.authName}}</span>
             </template>
-            <el-menu-item index="1-1" class="el-icon-location">选项1</el-menu-item>
-            <el-menu-item index="1-2" class="el-icon-location">选项2</el-menu-item>
-            <el-menu-item index="1-3" class="el-icon-location">选项3</el-menu-item>
+            <el-menu-item index="subItem.id+''" v-for="subItem in item.children" :key="subItem.id">
+              <i class="el-icon-location"></i>
+              <span>{{subItem.authName}}</span>
+            </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -37,10 +38,27 @@
 
 <script>
 export default {
+  data() {
+    return {
+      // 左侧菜单数据
+      menulist: []
+    }
+  },
+  // 添加生命周期函数
+  created() {
+    this.getMenuList()
+  },
   methods: {
     logout() {
       window.sessionStorage.clear()
       this.$router.push('/login')
+    },
+    // 获取所有的菜单
+    async getMenuList() {
+      const { data: res } = await this.$http.get('menus')
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+      this.menulist = res.data
+      console.log(res)
     }
   }
 }
