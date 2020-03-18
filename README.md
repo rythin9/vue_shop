@@ -12,9 +12,14 @@
 
 
 ### 创建分支
-    创建并切换到`login`分支: `git checkout -b login`
-    查看当前项目中的所有分支: `git branch`
-    切换到 master 分支: `git checkout master`
+- 创建并切换到`login`分支: `git checkout -b login`
+- 查看当前项目中的所有分支: `git branch`
+- 切换到 master 分支: `git checkout master`
+- git版本回退:
+    - 查看 git 的历史的五次操作: `git log -5 `
+    - 选择某一次的操作的 id 进行回滚: `git reset --hard eaa9f5c3dec4cba2e1ee35b55888a1a7a002c502`
+- 如果远程仓库与本地仓库冲突，建议先 `git pull` 查看冲突文件，进行修改后再进行提交
+- 如果不想修改可以强制推送( `git push -f` )或者删除仓库重建(不推荐)
 
 ### temp
 ### temp
