@@ -3,7 +3,7 @@ import Vue from 'vue'
 import {
     Button, Form, FormItem, Input, Message, Container, Header, Aside,
     Main, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table
-    , TableColumn, Switch, Tooltip
+    , TableColumn, Switch, Tooltip, Pagination
 } from 'element-ui'
 
 
@@ -27,6 +27,7 @@ Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Switch)
 Vue.use(Tooltip)
+Vue.use(Pagination)
 
 // message导入方式不同与上面
 Vue.prototype.$message = Message
